@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">QuizApp</string>
+    <string name="get_started_button">Get started</string>
+    <string name="choose_contact_button">Choose contact</string>
+    <string name="name_input_placeholder">Your name</string>
+    <string name="login_welcome">Hello there, Welcome Back!</string>
+    <string name="login_signin">Sign In to continue</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>
