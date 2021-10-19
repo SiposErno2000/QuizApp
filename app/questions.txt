@@ -1,0 +1,30 @@
+Which file extension is used to save Kotlin files.
+.java
+.kot
+.kt or .kts
+.android
+All classes in Kotlin classes are by default?
+public
+final
+sealed
+abstract
+What is correct way to create an arraylist in Kotlin?
+val map = hashMapOf(1 to "one", 2 to "two", 3 to "three")
+enum class Color {RED, GREEN, BLUE}
+val list = arrayListOf(1, 2, 3)
+val set = hashSetOf(1, 2, 3)
+What is an immutable variable?
+A variable that cannot change, read-only
+A variable that can be changed
+A variable used for string interpolation
+None of them
+How do you get the length of a string in Kotlin?
+str.length
+length(str)
+str.lengthOf
+none of them
+Which of the followings constructors are available in Kotlin?
+Primary constructor
+Secondary constructor
+Both 1 & 2
+None of the above
