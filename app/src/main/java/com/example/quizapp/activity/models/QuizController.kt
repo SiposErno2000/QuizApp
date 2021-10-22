@@ -40,7 +40,7 @@ class QuizController {
         list.add(".java")
         list.add(".java")
 
-        val question2 = "Which file extension is used to save Kotlin files."
+        val question2 = "Which file extension is used"
         list1.add(".kot")
         list1.add(".kot")
         list1.add(".kot")

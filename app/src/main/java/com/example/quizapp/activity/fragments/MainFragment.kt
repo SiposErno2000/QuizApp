@@ -22,6 +22,11 @@ class MainFragment : Fragment() {
     private var _binding : FragmentMainBinding? = null
     private val binding get() = _binding!!
     private lateinit var questions : QuizController
+    private lateinit var radioButton1 : RadioButton
+    private lateinit var radioButton2 : RadioButton
+    private lateinit var radioButton3 : RadioButton
+    private lateinit var radioButton4 : RadioButton
+    private lateinit var radioGroup : RadioGroup
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -41,12 +46,13 @@ class MainFragment : Fragment() {
 
         mainBinding.nextButton.setOnClickListener {
             if (questionCounter == questions.getQuestions().size-1) {
+                questionCounter++
                 navigateToFragment(QuizEndFragment(), correctAnswers.toString(), questionCounter.toString())
             } else {
                 questionCounter++
                 checkNextButtonText()
-                //changeViewsText()
-                addViews()
+                changeViewsText()
+                //addViews()
             }
         }
     }
@@ -79,34 +85,51 @@ class MainFragment : Fragment() {
         }
     }
 
+    private fun changeViewsText() {
+        var idCounter = 0
+        binding.question.text = questions.getQuestions()[questionCounter].question
+
+        radioButton1.text = questions.getQuestions()[questionCounter].answers[idCounter]
+        radioButton1.id = idCounter++
+
+        radioButton2.text = questions.getQuestions()[questionCounter].answers[idCounter]
+        radioButton2.id = idCounter++
+
+        radioButton3.text = questions.getQuestions()[questionCounter].answers[idCounter]
+        radioButton3.id = idCounter++
+
+        radioButton4.text = questions.getQuestions()[questionCounter].answers[idCounter]
+        radioButton4.id = idCounter
+    }
+
     @SuppressLint("ResourceType")
     private fun addViews() {
         var idCounter = 0
         val constraintLayout = binding.mainFragment
 
-        binding.question.text = questions.question
+        binding.question.text = questions.getQuestions()[questionCounter].question
 
-        val radioButton1 = RadioButton(requireContext())
+        radioButton1 = RadioButton(requireContext())
         radioButton1.layoutParams = ConstraintLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT)
         radioButton1.text = questions.getQuestions()[questionCounter].answers[idCounter]
         radioButton1.id = idCounter++
 
-        val radioButton2 = RadioButton(requireContext())
+        radioButton2 = RadioButton(requireContext())
         radioButton2.layoutParams = ConstraintLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT)
         radioButton2.text = questions.getQuestions()[questionCounter].answers[idCounter]
         radioButton2.id = idCounter++
 
-        val radioButton3 = RadioButton(requireContext())
+        radioButton3 = RadioButton(requireContext())
         radioButton3.layoutParams = ConstraintLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT)
         radioButton3.text = questions.getQuestions()[questionCounter].answers[idCounter]
         radioButton3.id = idCounter++
 
-        val radioButton4 = RadioButton(requireContext())
+        radioButton4 = RadioButton(requireContext())
         radioButton4.layoutParams = ConstraintLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT)
         radioButton4.text = questions.getQuestions()[questionCounter].answers[idCounter]
         radioButton4.id = idCounter
 
-        val radioGroup = RadioGroup(requireContext())
+        radioGroup = RadioGroup(requireContext())
         val params = ConstraintLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT)
         params.setMargins(50, 300,0 ,0)
         radioGroup.layoutParams = params
