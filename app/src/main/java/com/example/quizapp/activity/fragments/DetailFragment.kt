@@ -35,9 +35,9 @@ class DetailFragment : Fragment() {
         val currentQuestion : Question = Cache.getQuestion(position!!)
 
         question.text = currentQuestion.question
-        answer1.text = currentQuestion.answers[0]
-        answer2.text = currentQuestion.answers[1]
-        answer3.text = currentQuestion.answers[2]
-        answer4.text = currentQuestion.answers[3]
+        answer1.text = currentQuestion.correctanswer
+        answer2.text = currentQuestion.answers[0]
+        answer3.text = currentQuestion.answers[1]
+        answer4.text = currentQuestion.answers[2]
     }
 }

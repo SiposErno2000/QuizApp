@@ -45,14 +45,15 @@ class ProfileFragment : Fragment() {
         editButton.setOnClickListener {
             val alert = AlertDialog.Builder(requireContext())
             val input = EditText(requireContext())
-            val out : String
             alert.setView(input)
             alert.setNegativeButton("Cancel") { dialog, which -> }
-            alert.setPositiveButton("OK") { dialog, which -> }
+            alert.setPositiveButton("OK") { dialog, which ->
+                if (input.text.toString() != "") {
+                    Cache.setPlayerName(input.text.toString())
+                    name.text = input.text.toString()
+                }
+            }
             alert.show()
-            val toSend = input.text.toString()
-            name.text = toSend
-            Cache.setPlayerName(toSend)
         }
     }
 }

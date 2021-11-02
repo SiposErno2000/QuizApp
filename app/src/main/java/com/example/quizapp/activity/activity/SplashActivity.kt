@@ -9,6 +9,7 @@ import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import com.airbnb.lottie.LottieAnimationView
 import com.example.quizapp.R
+import com.example.quizapp.activity.cache.Cache
 
 class SplashActivity : AppCompatActivity() {
     private lateinit var topAnimation: Animation
@@ -48,7 +49,7 @@ class SplashActivity : AppCompatActivity() {
     private fun setAnimationListener() {
         lottieAnimation.setAnimationListener(object : Animation.AnimationListener {
             override fun onAnimationStart(animation: Animation) {
-
+                Cache.loadDataCache()
             }
 
             override fun onAnimationEnd(animation: Animation) {
@@ -59,5 +60,10 @@ class SplashActivity : AppCompatActivity() {
 
             override fun onAnimationRepeat(animation: Animation) {}
         })
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        Cache.dispose()
     }
 }

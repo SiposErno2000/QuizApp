@@ -4,13 +4,10 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.example.quizapp.R
-import com.example.quizapp.activity.cache.Cache
 import com.example.quizapp.activity.fragments.*
-import com.example.quizapp.activity.models.QuizController
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class MainActivity : AppCompatActivity() {
-    private lateinit var questions : QuizController
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -31,7 +28,7 @@ class MainActivity : AppCompatActivity() {
                     true
                 }
                 R.id.quiz_fragment -> {
-                    navigateToFragment(LoginFragment())
+                    navigateToFragment(QuizStartFragment())
                     true
                 }
                 R.id.profile_fragment -> {
@@ -49,11 +46,6 @@ class MainActivity : AppCompatActivity() {
                 else -> false
             }
         }
-
-        questions = QuizController()
-        questions.addData()
-        questions.randomizeQuestions()
-        Cache.addInitialQuestionList(questions.getQuestions())
     }
 
     private fun navigateToFragment(fragment: Fragment) {

@@ -34,7 +34,7 @@ class ListAdapter(list: MutableList<Question>, activity : Activity) : RecyclerVi
 
     override fun onBindViewHolder(holder: ListHolder, position: Int) {
         holder.question.text = questionList[position].question
-        holder.firstAnswer.text = questionList[position].answers[0]
+        holder.firstAnswer.text = questionList[position].correctanswer
 
         holder.deleteButton.setOnClickListener { deleteItem(position) }
         holder.detailButton.setOnClickListener { v ->

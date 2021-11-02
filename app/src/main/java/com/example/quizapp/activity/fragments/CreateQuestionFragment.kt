@@ -32,12 +32,12 @@ class CreateQuestionFragment : Fragment() {
     }
 
     private fun createUIElements(view: View) {
-        addQuestionButton = view.findViewById<Button>(R.id.add_question)
-        question = view.findViewById<TextInputLayout>(R.id.question_placeholder)
-        correctAnswer = view.findViewById<TextInputLayout>(R.id.correct_answer)
-        answer2 = view.findViewById<TextInputLayout>(R.id.answer2)
-        answer3 = view.findViewById<TextInputLayout>(R.id.answer3)
-        answer4 = view.findViewById<TextInputLayout>(R.id.answer4)
+        addQuestionButton = view.findViewById(R.id.add_question)
+        question = view.findViewById(R.id.question_placeholder)
+        correctAnswer = view.findViewById(R.id.correct_answer)
+        answer2 = view.findViewById(R.id.answer2)
+        answer3 = view.findViewById(R.id.answer3)
+        answer4 = view.findViewById(R.id.answer4)
 
         addQuestionButtonClickListener()
     }
@@ -46,11 +46,10 @@ class CreateQuestionFragment : Fragment() {
         addQuestionButton.setOnClickListener {
             if (isNotEmpty(question) && isNotEmpty(correctAnswer) && isNotEmpty(answer2) && isNotEmpty(answer3) && isNotEmpty(answer4)) {
                 val answerList : MutableList<String> = ArrayList()
-                answerList.add(correctAnswer.editText?.text.toString())
                 answerList.add(answer2.editText?.text.toString())
                 answerList.add(answer3.editText?.text.toString())
                 answerList.add(answer4.editText?.text.toString())
-                Cache.addQuestion(Question(question.editText?.text.toString(), answerList))
+                Cache.addQuestion(Question("Own Category", "Multiple", "Easy", question.editText?.text.toString(), correctAnswer.editText?.text.toString(),answerList))
                 navigateToFragment(HomeFragment())
             } else {
                 Toast.makeText(requireContext(), "Fields can not be empty!", Toast.LENGTH_SHORT).show()
