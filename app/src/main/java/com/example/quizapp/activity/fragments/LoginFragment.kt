@@ -2,24 +2,21 @@ package com.example.quizapp.activity.fragments
 
 import android.annotation.SuppressLint
 import android.app.Activity.RESULT_OK
-import android.content.ContentResolver
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.database.Cursor
 import android.os.Bundle
-import android.provider.CalendarContract.Attendees.query
 import android.provider.ContactsContract
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.Toast
-import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import com.example.quizapp.R
+import com.example.quizapp.activity.cache.Cache
 import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.textfield.TextInputLayout
 
@@ -51,7 +48,8 @@ class LoginFragment : Fragment() {
 
         startButton.setOnClickListener {
             if(isValidName(inputName, inputName) && isValidPassword(inputPassword,inputPassword)) {
-                navigateTo(MainFragment(), inputName.editText?.text.toString())
+                Cache.setPlayerName(inputName.editText?.text.toString())
+                navigateTo(QuizStartFragment(), inputName.editText?.text.toString())
             }
         }
 
@@ -148,7 +146,8 @@ class LoginFragment : Fragment() {
 
                 if (cursor.moveToFirst()) {
                     val result = cursor.getString(cursor.getColumnIndex(ContactsContract.Contacts.DISPLAY_NAME))
-                    navigateTo(MainFragment(), result)
+                    Cache.setPlayerName(result)
+                    navigateTo(QuizStartFragment(), result)
                 }
             }
         }

@@ -28,7 +28,7 @@ class QuizEndFragment : Fragment() {
         val result = view.findViewById<TextView>(R.id.result)
 
         tryAgainButton.setOnClickListener {
-            navigateToFragment(LoginFragment())
+            navigateToFragment(QuizStartFragment())
         }
 
         val bundle = arguments
