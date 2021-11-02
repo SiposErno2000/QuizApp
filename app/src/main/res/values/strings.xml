@@ -5,7 +5,7 @@
     <string name="name_input_placeholder">Your name</string>
     <string name="login_welcome">Hello there, Welcome Back!</string>
     <string name="login_signin">Sign In to continue</string>
-    <string name="alert_message">Enter a new password!</string>
+    <string name="alert_message">Are you sure you want to exit?</string>
     <string name="positive_alert_button">Yes</string>
     <string name="negative_alert_button">No</string>
     <string name="try_again">Try Again</string>

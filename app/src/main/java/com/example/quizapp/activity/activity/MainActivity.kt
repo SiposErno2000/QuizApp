@@ -56,10 +56,10 @@ class MainActivity : AppCompatActivity() {
     override fun onBackPressed() {
         val fragmentList: List<Fragment> = supportFragmentManager.fragments
 
-        val handled = false
+        var handled = false
         fragmentList.forEach {
             if (it is QuizStartFragment) {
-                it.onBackPressed()
+                handled = it.onBackPressed()
             }
         }
 

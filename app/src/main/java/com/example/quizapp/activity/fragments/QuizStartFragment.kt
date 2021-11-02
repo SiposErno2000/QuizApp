@@ -65,13 +65,15 @@ class QuizStartFragment : Fragment() {
         fragmentManager?.beginTransaction()?.replace(R.id.main_fragment_container, fragment)?.commit()
     }
 
-    fun onBackPressed() {
+    fun onBackPressed() : Boolean {
         val builder = AlertDialog.Builder(requireContext())
         builder.setMessage(R.string.alert_message)
         builder.setCancelable(true)
-        builder.setPositiveButton(R.string.positive_alert_button) { _, _ -> navigateToFragment(QuizEndFragment(), correctAnswers.toString(), questionCounter.toString()) }
+        builder.setPositiveButton(R.string.positive_alert_button) { _, _ -> navigateToFragment(QuizEndFragment(), correctAnswers.toString(), list.size.toString()) }
         builder.setNegativeButton(R.string.negative_alert_button) { dialog, _ -> dialog.cancel() }
-        builder.create().show()
+        val alertDialog = builder.create()
+        alertDialog.show()
+        return true
     }
 
     @SuppressLint("SetTextI18n")
